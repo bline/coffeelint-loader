@@ -86,7 +86,7 @@ function coffeeLint(input, options) {
 			var message = hints.join("\n\n");
 			var emitter = emitErrors ? this.emitError : this.emitWarning;
 			if(emitter)
-				emitter("jshint results in errors\n" + message);
+				emitter("coffelint results in errors\n" + message);
 			else
 				throw new Error("Your module system doesn't support emitWarning. Update availible? \n" + message);
 		}
