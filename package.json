@@ -5,7 +5,7 @@
 	"description": "coffeelint loader module for webpack",
 	"dependencies": {
 		"loader-utils": "0.2.x",
-		"strip-json-comments": "0.1.x"
+		"strip-json-comments": "1.0.x"
 	},
 	"peerDependencies": {
 		"coffeelint": "^1.6.0"
