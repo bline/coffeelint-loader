@@ -2,7 +2,7 @@
 	MIT License http://www.opensource.org/licenses/mit-license.php
 	Author Scott Beck @bline
 */
-var coffeelint = require("coffeelint");
+var coffeelint = require("coffeelint").lint;
 var stripJsonComments = require("strip-json-comments");
 var loaderUtils = require("loader-utils");
 var fs = require("fs");
