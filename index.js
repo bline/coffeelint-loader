@@ -21,8 +21,8 @@ function loadConfig(options, callback) {
 
 	if (sync){
 		if (!fs.existsSync(path)) {
-			// no .jshintrc found
-			return {};
+			// no coffeelint.json found
+			return merge({});
 		} else {
 			this.addDependency(path);
 			var file = fs.readFileSync(path, "utf8");
@@ -33,7 +33,7 @@ function loadConfig(options, callback) {
     fs.exists(path, function (exists) {
       if (!exists) {
         // no coffeelint.json
-				return callback(null, {});
+				return callback(null, merge({}));
 			}
 
 			this.addDependency(path);
@@ -118,13 +118,13 @@ module.exports = function(input) {
 
   options = mergeOptions.call(this);
 	if(!callback) {
-		// load .jshintrc synchronously
+		// load coffeelint.json synchronously
 		var config = loadConfig.call(this, options);
 		coffeeLint.call(this, input, config);
 		return input;
 	}
 
-	// load .jshintrc asynchronously
+	// load coffeelint.json asynchronously
 	loadConfig.call(this, options, function(err, config) {
 		if(err) return callback(err);
 
