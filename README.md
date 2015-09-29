@@ -18,7 +18,7 @@ module.exports = {
 
 	// more options in the optional coffeelint object
 	coffeelint: {
-		// any coffeelint option http://www.coffeelint.com/#options
+		// any coffeelint option http://www.coffeelint.org/#options
 		// i. e.
 		camel_case_classes: 'error',
 
