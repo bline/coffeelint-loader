@@ -3,6 +3,7 @@
 	Author Scott Beck @bline
 */
 var coffeelint = require("coffeelint").lint;
+var getConfig = require("coffeelint/lib/configfinder").getConfig;
 var stripJsonComments = require("strip-json-comments");
 var loaderUtils = require("loader-utils");
 var fs = require("fs");
@@ -25,8 +26,8 @@ function loadConfig(options, callback) {
 			return merge({});
 		} else {
 			this.addDependency(path);
-			var file = fs.readFileSync(path, "utf8");
-			return merge(JSON.parse(stripJsonComments(file)));
+			var file = getConfig(path);
+			return file;
 		}
 	}
 	else {
@@ -37,18 +38,14 @@ function loadConfig(options, callback) {
 			}
 
 			this.addDependency(path);
-			fs.readFile(path, "utf8", function(err, file) {
-				var options;
-				if (!err) {
-					try {
-						options = merge(JSON.parse(stripJsonComments(file)));
-					}
-					catch(e) {
-						err = e;
-					}
-				}
-				callback(err, options);
-			});
+			var options;
+			var err;
+			try {
+				options = getConfig(path);
+			} catch(e) {
+				err = e;
+			}
+			callback(err, options);
 		}.bind(this));
 	}
 }
@@ -138,4 +135,3 @@ module.exports = function(input) {
 
 	}.bind(this));
 }
-
