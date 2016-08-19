@@ -41,8 +41,7 @@ function loadConfig(options, callback) {
 			var options;
 			var err;
 			try {
-				options = getConfig(path)
-				console.log(options)
+				options = getConfig(path);
 			} catch(e) {
 				err = e;
 			}
