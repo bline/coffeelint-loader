@@ -72,8 +72,9 @@ function coffeeLint(input, options) {
     error: [],
     warn: []
   };
-  for (var i = 0; i < data.length; ++i)
-    result[data[i].level] = data[i]
+  for (var i = 0; i < data.length; ++i) {
+    result[data[i].level].push(data[i])
+  }
 	if (data.length) {
 		if(reporter) {
 			reporter.call(this, result);
